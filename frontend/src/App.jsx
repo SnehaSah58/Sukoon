@@ -5,7 +5,7 @@ function App() {
 
         <p className="welcome-label">WELCOME TO</p>
 
-        <h1>sukoon.</h1>
+        <h1>Sukoon.</h1>
 
         <p className="welcome-text">
           A little corner of the internet
