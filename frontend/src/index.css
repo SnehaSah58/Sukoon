@@ -735,23 +735,338 @@ body {
   cursor: pointer;
 }
 
-
 /* Mobile */
-
 @media (max-width: 650px) {
-
   .music-player {
     grid-template-columns: 1fr;
-
     padding: 24px;
   }
-
   .player-controls {
     justify-content: center;
   }
-
   .player-progress {
     grid-column: auto;
   }
+}
 
+
+/* =========================================
+   EXPERIENCES PAGE
+========================================= */
+
+.experiences-page {
+  min-height: 100vh;
+
+  background:
+    radial-gradient(
+      circle at top,
+      #2a1712 0%,
+      #140b09 45%,
+      #0d0706 100%
+    );
+
+  color: #f7eee7;
+}
+
+
+/* =========================================
+   MAIN CONTENT
+========================================= */
+
+.experiences-content {
+  max-width: 850px;
+
+  margin: 0 auto;
+
+  padding: 90px 24px 100px;
+
+  text-align: center;
+}
+
+
+.experiences-label {
+  margin-bottom: 22px;
+
+  color: #d8a85d;
+
+  font-family: Arial, sans-serif;
+
+  font-size: 0.75rem;
+
+  font-weight: 600;
+
+  letter-spacing: 5px;
+}
+
+
+.experiences-content h1 {
+  margin-bottom: 24px;
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size: clamp(3.5rem, 7vw, 5.5rem);
+
+  font-weight: 400;
+
+  line-height: 1.05;
+}
+
+
+.experiences-description {
+  color: #b9aaa2;
+
+  font-family: Arial, sans-serif;
+
+  font-size: 1rem;
+
+  line-height: 1.8;
+}
+
+
+/* =========================================
+   FORM
+========================================= */
+
+.experience-form {
+  margin-top: 70px;
+
+  text-align: left;
+}
+
+
+/* =========================================
+   MOOD SECTION
+========================================= */
+
+.mood-choice {
+  margin-bottom: 55px;
+}
+
+
+.mood-choice h2,
+.privacy-choice h2 {
+  margin-bottom: 24px;
+
+  color: #e8ddd5;
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size: 1.35rem;
+
+  font-weight: 400;
+}
+
+
+.experience-moods {
+  display: grid;
+
+  grid-template-columns: repeat(3, 1fr);
+
+  gap: 14px;
+}
+
+
+.experience-mood {
+  min-height: 105px;
+
+  padding: 20px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 10px;
+
+  border: 1px solid rgba(216, 168, 93, 0.15);
+
+  border-radius: 20px;
+
+  background: rgba(255, 255, 255, 0.035);
+
+  color: #f7eee7;
+
+  cursor: pointer;
+
+  font-family: Arial, sans-serif;
+
+  transition:
+    transform 0.3s ease,
+    background 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+
+.experience-mood:hover {
+  transform: translateY(-4px);
+
+  background: rgba(216, 168, 93, 0.07);
+
+  border-color: rgba(216, 168, 93, 0.4);
+}
+
+
+.experience-mood.active {
+  background: rgba(216, 168, 93, 0.12);
+
+  border-color: #d8a85d;
+
+  box-shadow:
+    0 0 0 1px rgba(216, 168, 93, 0.15),
+    0 12px 35px rgba(0, 0, 0, 0.2);
+}
+
+
+.experience-mood span {
+  color: #d8ccc5;
+
+  font-size: 0.9rem;
+}
+
+
+.experience-mood:first-line {
+  font-size: 1.5rem;
+}
+
+
+/* =========================================
+   WRITING AREA
+========================================= */
+
+.experience-writing {
+  margin-bottom: 45px;
+}
+
+
+.experience-writing label {
+  display: block;
+  margin-bottom: 14px;
+  color: #e8ddd5;
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+  font-size: 1.35rem;
+}
+
+.experience-writing textarea {
+  width: 100%;
+  min-height: 190px;
+  padding: 22px;
+  resize: vertical;
+  border: 1px solid rgba(216, 168, 93, 0.16);
+  border-radius: 20px;
+  outline: none;
+  background: rgba(255, 255, 255, 0.035);
+  color: #f7eee7;
+  font-family: Arial, sans-serif;
+  font-size: 0.95rem;
+  line-height: 1.7;
+  backdrop-filter: blur(10px);
+  transition:
+    border-color 0.3s ease,
+    background 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.experience-writing textarea::placeholder {
+  color: #756963;
+}
+
+
+.experience-writing textarea:focus {
+  border-color: rgba(216, 168, 93, 0.55);
+  background: rgba(255, 255, 255, 0.05);
+  box-shadow:
+    0 0 0 3px rgba(216, 168, 93, 0.06);
+}
+
+/* =========================================
+   PRIVACY
+========================================= */
+
+.privacy-choice {
+  margin-bottom: 45px;
+}
+
+.privacy-option {
+  width: 100%;
+  margin-bottom: 12px;
+  padding: 18px 20px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  border: 1px solid rgba(216, 168, 93, 0.13);
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.03);
+  color: #d8ccc5;
+  font-family: Arial, sans-serif;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition:
+    background 0.3s ease,
+    border-color 0.3s ease;
+}
+
+.privacy-option:hover {
+  background: rgba(216, 168, 93, 0.06);
+  border-color: rgba(216, 168, 93, 0.3);
+}
+
+.privacy-option input {
+  accent-color: #d8a85d;
+  cursor: pointer;
+}
+
+.experience-submit {
+  display: block;
+  margin: 0 auto;
+  padding: 15px 30px;
+  border: 1px solid #d8a85d;
+  border-radius: 999px;
+  background: #d8a85d;
+  color: #180b08;
+  font-family: Arial, sans-serif;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease,
+    background 0.3s ease;
+}
+
+.experience-submit:hover {
+  transform: translateY(-3px);
+  box-shadow:
+    0 10px 30px rgba(216, 168, 93, 0.2);
+}
+
+
+@media (max-width: 650px) {
+  .experiences-content {
+    padding-top: 65px;
+  }
+  .experience-moods {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 450px) {
+  .experience-moods {
+    grid-template-columns: 1fr;
+  }
+  .experience-mood {
+    min-height: 80px;
+  }
 }

@@ -10,9 +10,13 @@ function MusicPlayer({ selectedMood, playlist }) {
   const audioRef = useRef(null);
   const currentSong = playlist[currentSongIndex];
 
-  // Mood change hone par first song par reset
   useEffect(() => {
+    // Purana song stop karo
+    if (audioRef.current) {
+      audioRef.current.pause();
+    }
 
+    // New mood ki first song se start
     setCurrentSongIndex(0);
     setCurrentTime(0);
     setDuration(0);
@@ -21,138 +25,110 @@ function MusicPlayer({ selectedMood, playlist }) {
   }, [selectedMood]);
 
 
-  // Jab current song change ho
   useEffect(() => {
-
     if (!audioRef.current) return;
-
+    // New song load karo
     audioRef.current.load();
-
     setCurrentTime(0);
     setDuration(0);
+  }, [currentSongIndex, selectedMood]);
 
-  }, [currentSongIndex]);
 
-
-  // Play / Pause
   const handlePlayPause = async () => {
-
     if (!audioRef.current) return;
-
     if (isPlaying) {
-
       audioRef.current.pause();
       setIsPlaying(false);
-
     } else {
-
       try {
-
         await audioRef.current.play();
         setIsPlaying(true);
-
       } catch (error) {
-
         console.log("Audio play failed:", error);
-
       }
-
     }
   };
 
 
-  // Song ka current time
   const handleTimeUpdate = () => {
-
     if (!audioRef.current) return;
-
-    setCurrentTime(audioRef.current.currentTime);
+    setCurrentTime(
+      audioRef.current.currentTime
+    );
 
   };
 
-
-  // Audio ki duration load hone ke baad
   const handleLoadedMetadata = () => {
     if (!audioRef.current) return;
-    setDuration(audioRef.current.duration);
-
+    setDuration(
+      audioRef.current.duration
+    );
   };
 
 
-  // Progress bar
   const handleSeek = (event) => {
     const newTime = Number(event.target.value);
     if (!audioRef.current) return;
-    audioRef.current.currentTime = newTime;
+    audioRef.current.currentTime =
+      newTime;
     setCurrentTime(newTime);
 
   };
 
 
-  // Next song
   const handleNext = async () => {
-
     const nextIndex =
-      (currentSongIndex + 1) % playlist.length;
+      (currentSongIndex + 1) %
+      playlist.length;
 
     setCurrentSongIndex(nextIndex);
     setCurrentTime(0);
     setDuration(0);
 
+    // React ko new song render karne ka time
     setTimeout(async () => {
-
       if (!audioRef.current) return;
-
       try {
-
         await audioRef.current.play();
         setIsPlaying(true);
-
       } catch (error) {
-
-        console.log("Next song play failed:", error);
-
+        console.log(
+          "Next song play failed:",
+          error
+        );
       }
-
     }, 100);
-
   };
 
-
-  // Previous song
   const handlePrevious = async () => {
 
     const previousIndex =
-      (currentSongIndex - 1 + playlist.length) % playlist.length;
-
+      (currentSongIndex - 1 +
+        playlist.length) %
+      playlist.length;
     setCurrentSongIndex(previousIndex);
     setCurrentTime(0);
     setDuration(0);
 
     setTimeout(async () => {
-
       if (!audioRef.current) return;
-
       try {
-
         await audioRef.current.play();
         setIsPlaying(true);
-
       } catch (error) {
-        console.log("Previous song play failed:", error);
+        console.log(
+          "Previous song play failed:",
+          error
+        );
       }
     }, 100);
   };
 
-
-  // Song khatam → automatically next
   const handleSongEnd = () => {
     handleNext();
-
   };
 
 
-  // Time ko 0:00 format mein convert karna
   const formatTime = (time) => {
     if (!time || isNaN(time)) {
       return "0:00";
@@ -169,7 +145,7 @@ function MusicPlayer({ selectedMood, playlist }) {
     <div className="music-player">
 
       <audio
-        key={currentSong.src}
+        key={`${selectedMood}-${currentSongIndex}`}
         ref={audioRef}
         src={currentSong.src}
         onTimeUpdate={handleTimeUpdate}
@@ -177,17 +153,20 @@ function MusicPlayer({ selectedMood, playlist }) {
         onEnded={handleSongEnd}
       />
 
-
-      {/* Song information */}
-
       <div className="player-info">
 
-        <div className="album-art">
-          🌙
-        </div>
+      <div className="album-art">
+
+        {selectedMood === "rainyEvening" && "🌧️"}
+        {selectedMood === "midnight" && "🌙"}
+        {selectedMood === "chaiTime" && "☕"}
+        {selectedMood === "peace" && "🕊️"}
+        {selectedMood === "focus" && "🌿"}
+        {selectedMood === "nostalgia" && "📷"}
+
+      </div>
 
         <div>
-
           <p className="player-title">
             {currentSong.title}
           </p>
@@ -195,16 +174,11 @@ function MusicPlayer({ selectedMood, playlist }) {
           <p className="player-mood">
             {selectedMood}
           </p>
-
         </div>
-
       </div>
 
 
-      {/* Controls */}
-
       <div className="player-controls">
-
         <button
           className="control-button"
           onClick={handlePrevious}
@@ -227,14 +201,10 @@ function MusicPlayer({ selectedMood, playlist }) {
         >
           ⏭
         </button>
-
       </div>
 
 
-      {/* Progress */}
-
       <div className="player-progress">
-
         <span>
           {formatTime(currentTime)}
         </span>
@@ -246,13 +216,10 @@ function MusicPlayer({ selectedMood, playlist }) {
           value={currentTime}
           onChange={handleSeek}
         />
-
         <span>
           {formatTime(duration)}
         </span>
-
       </div>
-
     </div>
   );
 }
