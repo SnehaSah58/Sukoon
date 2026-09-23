@@ -6,15 +6,40 @@ function Experiences() {
   const [selectedMood, setSelectedMood] = useState("");
   const [experience, setExperience] = useState("");
   const [privacy, setPrivacy] = useState("private");
+  const [submitMessage, setSubmitMessage] = useState("");
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    console.log({
-      mood: selectedMood,
-      experience: experience,
-      privacy: privacy
-    });
-  };
+  const handleSubmit = async (event) => {
+  event.preventDefault();
+
+  try {
+    const response = await fetch(
+      "http://localhost:5000/api/experiences",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          mood: selectedMood,
+          experience: experience,
+          privacy: privacy,
+        }),
+      }
+    );
+
+    const data = await response.json();
+    if (!response.ok) {
+      throw new Error(data.message);
+    }
+    console.log("Experience saved:", data);
+    setSubmitMessage("🌙 Your experience has been saved.");
+    setExperience("");
+    setSelectedMood("");
+  } catch (error) {
+    console.error("Error saving experience:", error);
+    setSubmitMessage("Something went wrong. Please try again.");
+  }
+};
 
   return (
     <div className="experiences-page">
@@ -218,6 +243,11 @@ function Experiences() {
           >
             Share experience
           </button>
+          {submitMessage && (
+          <p className="submit-message">
+          {submitMessage}
+          </p>
+          )}
         </form>
       </main>
     </div>
