@@ -2,76 +2,73 @@ import Navbar from "../components/Navbar";
 import MusicPlayer from "../components/MusicPlayer";
 import { useState } from "react";
 
-
+import rainySong from "../assets/music/rainyEvening1.mp3";
+import zaraZaraSong from "../assets/music/rainyEvening2.mp3";
 
 const musicLibrary = {
   rainyEvening: [
     {
-      title: "A Quiet Evening",
-      src: ""
+      title: "Rainy Evening",
+      src: rainySong
     },
     {
-      title: "Rain on the Window",
-      src: ""
-    },
-    {
-      title: "After the Rain",
-      src: ""
+      title: "Zara Zara",
+      src: zaraZaraSong
     }
   ],
 
   midnight: [
     {
-      title: "Midnight Walk",
-      src: ""
+      title: "Rainy Evening",
+      src: rainySong
     },
     {
-      title: "Moonlit Thoughts",
-      src: ""
+      title: "Zara Zara",
+      src: zaraZaraSong
     }
   ],
 
   chaiTime: [
     {
-      title: "Warm Cup",
-      src: ""
+      title: "Rainy Evening",
+      src: rainySong
     },
     {
-      title: "Slow Evening",
-      src: ""
+      title: "Zara Zara",
+      src: zaraZaraSong
     }
   ],
 
   peace: [
     {
-      title: "Stillness",
-      src: ""
+      title: "Rainy Evening",
+      src: rainySong
     },
     {
-      title: "Quiet Mind",
-      src: ""
+      title: "Zara Zara",
+      src: zaraZaraSong
     }
   ],
 
   focus: [
     {
-      title: "Deep Focus",
-      src: ""
+      title: "Rainy Evening",
+      src: rainySong
     },
     {
-      title: "Flow",
-      src: ""
+      title: "Zara Zara",
+      src: zaraZaraSong
     }
   ],
 
   nostalgia: [
     {
-      title: "Old Memories",
-      src: ""
+      title: "Rainy Evening",
+      src: rainySong
     },
     {
-      title: "Back Then",
-      src: ""
+      title: "Zara Zara",
+      src: zaraZaraSong
     }
   ]
 };
@@ -152,7 +149,10 @@ function Listen() {
             </button>
           </div>
         </section>
-        <MusicPlayer selectedMood={selectedMood} />
+        <MusicPlayer
+        selectedMood={selectedMood}
+        playlist={musicLibrary[selectedMood]}
+        />
       </main>
     </div>
   );

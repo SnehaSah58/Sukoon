@@ -9,15 +9,10 @@ function Navbar() {
       </Link>
 
       <div className="nav-links">
-
         <Link to="/home">Home</Link>
-
         <Link to="/listen">Listen</Link>
-
         <Link to="/experiences">Experiences</Link>
-
         <Link to="/stories">Stories</Link>
-
       </div>
 
     </nav>
