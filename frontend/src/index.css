@@ -1181,3 +1181,321 @@ body {
   font-size: 0.85rem;
   opacity: 0.9;
 }
+
+/* ============================= */
+/* STORIES PAGE */
+/* ============================= */
+
+.stories-page {
+  min-height: 100vh;
+  background: #17100f;
+  color: #f1e5d6;
+}
+
+.stories-content {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 100px 30px 80px;
+  text-align: center;
+}
+
+.stories-label {
+  margin-bottom: 14px;
+  color: #dca652;
+  font-size: 0.8rem;
+  letter-spacing: 4px;
+}
+
+.stories-content h1 {
+  margin: 0;
+  font-size: 3.5rem;
+  line-height: 1.15;
+  font-weight: 500;
+}
+
+.stories-description {
+  margin-top: 24px;
+  color: #b9a99a;
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+/* STORY CARDS */
+
+.story-grid {
+  margin-top: 60px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+
+.story-card {
+  padding: 35px 30px;
+  min-height: 250px;
+  background: rgba(40, 25, 21, 0.75);
+  border: 1px solid rgba(220, 166, 82, 0.15);
+  border-radius: 20px;
+  text-align: left;
+  transition: transform 0.3s ease, border-color 0.3s ease, background 0.3s ease;
+}
+
+.story-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(220, 166, 82, 0.45);
+  background: rgba(48, 29, 24, 0.9);
+}
+
+.story-icon {
+  font-size: 2.2rem;
+  margin-bottom: 20px;
+}
+
+.story-card h2 {
+  margin: 0 0 12px;
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
+.story-card p {
+  margin: 0;
+  max-width: 400px;
+  color: #b9a99a;
+  line-height: 1.6;
+  font-size: 0.95rem;
+}
+
+.story-card span {
+  display: inline-block;
+  margin-top: 25px;
+  color: #dca652;
+  font-size: 0.9rem;
+}
+
+/* MOBILE */
+
+@media (max-width: 700px) {
+  .stories-content {
+    padding: 70px 20px 60px;
+  }
+
+  .stories-content h1 {
+    font-size: 2.5rem;
+  }
+
+  .story-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ============================= */
+/* STORY DETAILS PAGE */
+/* ============================= */
+
+.story-details-page {
+  min-height: 100vh;
+  background:
+    radial-gradient(
+      circle at 50% 10%,
+      rgba(91, 65, 48, 0.35),
+      transparent 45%
+    ),
+    #120c0c;
+
+  color: #f1e5d6;
+  padding-bottom: 100px;
+}
+
+.story-header {
+  max-width: 850px;
+  margin: 0 auto;
+  padding: 110px 25px 70px;
+  text-align: center;
+}
+
+.story-icon {
+  display: block;
+  font-size: 4rem;
+  margin-bottom: 20px;
+}
+
+.story-genre {
+  margin: 0 0 18px;
+  color: #dca652;
+  font-size: 0.78rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.story-header h1 {
+  margin: 0;
+  font-size: 3.8rem;
+  line-height: 1.15;
+  font-weight: 500;
+}
+
+.story-description {
+  max-width: 600px;
+  margin: 25px auto 0;
+
+  color: #b9a99a;
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+/* ============================= */
+/* STORY CONTENT */
+/* ============================= */
+
+.story-content {
+  width: min(720px, calc(100% - 40px));
+  margin: 0 auto;
+}
+
+.story-chapter {
+  margin-top: 30px;
+}
+
+.chapter-label {
+  margin: 0 0 10px;
+
+  color: #dca652;
+  font-size: 0.75rem;
+  letter-spacing: 3px;
+}
+
+.story-chapter h2 {
+  margin: 0 0 45px;
+
+  font-size: 2.2rem;
+  font-weight: 500;
+}
+
+/* ============================= */
+/* NARRATION */
+/* ============================= */
+
+.story-scenes {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.story-narration {
+  margin: 0;
+
+  color: #d5c7b8;
+  font-size: 1.08rem;
+  line-height: 2;
+  letter-spacing: 0.1px;
+}
+
+/* ============================= */
+/* CLOCK SCENE */
+/* ============================= */
+
+.story-clock {
+  width: 170px;
+  height: 170px;
+
+  margin: 25px auto;
+
+  border: 1px solid rgba(220, 166, 82, 0.25);
+  border-radius: 50%;
+
+  background: rgba(35, 20, 17, 0.65);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  gap: 8px;
+
+  box-shadow:
+    0 0 40px rgba(220, 166, 82, 0.08);
+}
+
+.story-clock span {
+  font-size: 1.7rem;
+}
+
+.story-clock strong {
+  color: #dca652;
+  font-size: 1.25rem;
+  font-weight: 500;
+}
+
+/* ============================= */
+/* MYSTERY SCENE */
+/* ============================= */
+
+.story-mystery {
+  margin: 25px 0;
+
+  padding: 28px;
+
+  border: 1px solid rgba(220, 166, 82, 0.22);
+  border-radius: 18px;
+
+  background: rgba(42, 27, 23, 0.7);
+
+  text-align: center;
+}
+
+.mystery-icon {
+  display: block;
+  margin-bottom: 12px;
+
+  font-size: 1.8rem;
+}
+
+.story-mystery h3 {
+  margin: 0 0 10px;
+
+  color: #e4c48d;
+  font-size: 1.3rem;
+  font-weight: 500;
+}
+
+.story-mystery p {
+  margin: 0;
+
+  color: #b9a99a;
+  line-height: 1.7;
+}
+
+/* ============================= */
+/* MOBILE */
+/* ============================= */
+
+@media (max-width: 700px) {
+  .story-header {
+    padding: 80px 20px 55px;
+  }
+
+  .story-header h1 {
+    font-size: 2.5rem;
+  }
+
+  .story-icon {
+    font-size: 3rem;
+  }
+
+  .story-content {
+    width: min(100% - 32px, 720px);
+  }
+
+  .story-chapter h2 {
+    font-size: 1.8rem;
+  }
+
+  .story-narration {
+    font-size: 1rem;
+    line-height: 1.85;
+  }
+
+  .story-clock {
+    width: 145px;
+    height: 145px;
+  }
+}

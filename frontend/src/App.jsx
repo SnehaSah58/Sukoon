@@ -5,6 +5,7 @@ import Home from "./pages/Home";
 import Listen from "./pages/Listen";
 import Experiences from "./pages/Experiences";
 import Stories from "./pages/Stories";
+import StoryDetails from "./pages/StoryDetails";
 
 function Landing() {
   return (
@@ -55,12 +56,12 @@ function App() {
 
         <Route path="/listen" element={<Listen />} />
 
-        <Route
-          path="/experiences"
-          element={<Experiences />}
-        />
+        <Route path="/experiences" element={<Experiences />} />
 
         <Route path="/stories" element={<Stories />} />
+
+        <Route path="/stories/:storyId" element={<StoryDetails />} />
+        
 
       </Routes>
     </BrowserRouter>
