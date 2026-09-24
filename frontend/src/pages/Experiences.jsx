@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Navbar from "../components/Navbar";
 
 function Experiences() {
@@ -7,6 +7,37 @@ function Experiences() {
   const [experience, setExperience] = useState("");
   const [privacy, setPrivacy] = useState("private");
   const [submitMessage, setSubmitMessage] = useState("");
+  const [publicExperiences, setPublicExperiences] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+  const fetchPublicExperiences = async () => {
+    try {
+      const response = await fetch(
+        "http://localhost:5000/api/experiences/public"
+      );
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.message);
+      }
+
+      setPublicExperiences(data.experiences);
+
+    } catch (error) {
+      console.error(
+        "Error fetching experiences:",
+        error
+      );
+
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  fetchPublicExperiences();
+}, []);
 
   const handleSubmit = async (event) => {
   event.preventDefault();
@@ -69,8 +100,6 @@ function Experiences() {
         >
 
 
-          {/* MOODS */}
-
           <section className="mood-choice">
 
             <h2>
@@ -92,7 +121,6 @@ function Experiences() {
                 <span>Sad</span>
               </button>
 
-
               <button
                 type="button"
                 className={
@@ -105,7 +133,6 @@ function Experiences() {
                 😌
                 <span>Calm</span>
               </button>
-
 
               <button
                 type="button"
@@ -120,7 +147,6 @@ function Experiences() {
                 <span>Loved</span>
               </button>
 
-
               <button
                 type="button"
                 className={
@@ -134,7 +160,6 @@ function Experiences() {
                 <span>Anxious</span>
               </button>
 
-
               <button
                 type="button"
                 className={
@@ -147,7 +172,6 @@ function Experiences() {
                 😶
                 <span>Lost</span>
               </button>
-
 
               <button
                 type="button"
@@ -164,8 +188,7 @@ function Experiences() {
             </div>
           </section>
 
-
-          {/* TEXT AREA */}
+      
 
           <section className="experience-writing">
 
@@ -206,7 +229,6 @@ function Experiences() {
                   setPrivacy(event.target.value)
                 }
               />
-
               <span>
                 🔒 Keep it private
               </span>
@@ -229,9 +251,7 @@ function Experiences() {
               <span>
                 🌍 Share anonymously
               </span>
-
             </label>
-
           </section>
 
 
@@ -249,6 +269,58 @@ function Experiences() {
           </p>
           )}
         </form>
+        <br></br>
+
+          <section className="public-experiences">
+
+            <div className="public-experiences-heading">
+              <p className="experiences-label">
+                YOU'RE NOT ALONE
+              </p>
+
+              <h2>
+                You're not the only one.
+              </h2>
+
+              <p>
+                Sometimes someone else's words
+                <br />
+                make things feel a little lighter.
+              </p>
+            </div>
+
+            {isLoading ? (
+              <p className="experiences-loading">
+                Loading experiences...
+              </p>
+            ) : publicExperiences.length === 0 ? (
+              <p className="experiences-empty">
+                No shared experiences yet.
+              </p>
+            ) : (
+              <div className="public-experiences-list">
+                {publicExperiences.map((item) => (
+                  <article
+                    className="experience-card"
+                    key={item._id}
+                  >
+                    <div className="experience-card-mood">
+                      {item.mood}
+                    </div>
+
+                    <p className="experience-card-text">
+                      {item.experience}
+                    </p>
+
+                    <p className="experience-card-author">
+                      — anonymously
+                    </p>
+                  </article>
+                ))}
+              </div>
+            )}
+          </section>
+
       </main>
     </div>
   );
