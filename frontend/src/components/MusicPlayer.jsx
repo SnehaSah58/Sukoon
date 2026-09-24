@@ -6,6 +6,8 @@ function MusicPlayer({ selectedMood, playlist }) {
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
+  const [sleepTimer, setSleepTimer] = useState(null);
+  const [sleepTimeLeft, setSleepTimeLeft] = useState(0);
 
   const audioRef = useRef(null);
   const currentSong = playlist[currentSongIndex];
@@ -33,6 +35,42 @@ function MusicPlayer({ selectedMood, playlist }) {
     setDuration(0);
   }, [currentSongIndex, selectedMood]);
 
+  const startSleepTimer = (minutes) => {
+  const seconds = minutes * 60;
+
+    setSleepTimer(seconds);
+    setSleepTimeLeft(seconds);
+  };
+
+  const cancelSleepTimer = () => {
+    setSleepTimer(null);
+    setSleepTimeLeft(0);
+  };
+
+  useEffect(() => {
+  if (sleepTimeLeft <= 0) return;
+
+  const timer = setInterval(() => {
+    setSleepTimeLeft((previousTime) => {
+      if (previousTime <= 1) {
+        clearInterval(timer);
+
+        if (audioRef.current) {
+          audioRef.current.pause();
+        }
+
+        setIsPlaying(false);
+        setSleepTimer(null);
+
+        return 0;
+      }
+
+      return previousTime - 1;
+    });
+  }, 1000);
+
+  return () => clearInterval(timer);
+}, [sleepTimeLeft]);
 
   const handlePlayPause = async () => {
     if (!audioRef.current) return;
@@ -49,13 +87,11 @@ function MusicPlayer({ selectedMood, playlist }) {
     }
   };
 
-
   const handleTimeUpdate = () => {
     if (!audioRef.current) return;
     setCurrentTime(
       audioRef.current.currentTime
     );
-
   };
 
   const handleLoadedMetadata = () => {
@@ -102,10 +138,7 @@ function MusicPlayer({ selectedMood, playlist }) {
 
   const handlePrevious = async () => {
 
-    const previousIndex =
-      (currentSongIndex - 1 +
-        playlist.length) %
-      playlist.length;
+    const previousIndex =(currentSongIndex - 1 + playlist.length) % playlist.length;
     setCurrentSongIndex(previousIndex);
     setCurrentTime(0);
     setDuration(0);
@@ -127,7 +160,6 @@ function MusicPlayer({ selectedMood, playlist }) {
   const handleSongEnd = () => {
     handleNext();
   };
-
 
   const formatTime = (time) => {
     if (!time || isNaN(time)) {
@@ -220,6 +252,59 @@ function MusicPlayer({ selectedMood, playlist }) {
           {formatTime(duration)}
         </span>
       </div>
+
+      <div className="sleep-timer">
+      <span className="sleep-timer-label">🌙 Sleep Timer</span>
+
+      <div className="sleep-timer-options">
+
+        <button
+          type="button"
+          className={sleepTimer === null ? "active" : ""}
+          onClick={cancelSleepTimer} >
+          Off
+        </button>
+
+        <button
+          type="button"
+          className={sleepTimer === 15 * 60 ? "active" : ""}
+          onClick={() => startSleepTimer(15)} >
+          15 min
+        </button>
+
+        <button
+          type="button"
+          className={sleepTimer === 30 * 60 ? "active" : ""}
+          onClick={() => startSleepTimer(30)}  >
+          30 min
+        </button>
+
+        <button
+          type="button"
+          className={sleepTimer === 45 * 60 ? "active" : ""}
+          onClick={() => startSleepTimer(45)} >
+          45 min
+        </button>
+
+        <button
+          type="button"
+          className={sleepTimer === 60 * 60 ? "active" : ""}
+          onClick={() => startSleepTimer(60)} >
+          60 min
+        </button>
+      </div>
+
+      {sleepTimeLeft > 0 && (
+        <p className="sleep-timer-countdown">
+          Music stops in{" "}
+          {Math.floor(sleepTimeLeft / 60)}:
+          {(sleepTimeLeft % 60)
+            .toString()
+            .padStart(2, "0")}
+        </p>
+      )}
+    </div>
+
     </div>
   );
 }
