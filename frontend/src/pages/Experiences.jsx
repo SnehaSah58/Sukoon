@@ -14,14 +14,10 @@ function Experiences() {
   const recognitionRef = useRef(null);
 
   const startVoiceInput = () => {
-  const SpeechRecognition =
-    window.SpeechRecognition ||
-    window.webkitSpeechRecognition;
+  const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
 
   if (!SpeechRecognition) {
-    alert(
-      "Voice input is not supported in this browser."
-    );
+    alert("Voice input is not supported in this browser.");
     return;
   }
 
@@ -64,11 +60,9 @@ function Experiences() {
       );
 
       const data = await response.json();
-
       if (!response.ok) {
         throw new Error(data.message);
       }
-
       setPublicExperiences(data.experiences);
 
     } catch (error) {
