@@ -1,5 +1,6 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import Navbar from "../components/Navbar";
+
 
 function Experiences() {
 
@@ -9,6 +10,51 @@ function Experiences() {
   const [submitMessage, setSubmitMessage] = useState("");
   const [publicExperiences, setPublicExperiences] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [isListening, setIsListening] = useState(false);
+  const recognitionRef = useRef(null);
+
+  const startVoiceInput = () => {
+  const SpeechRecognition =
+    window.SpeechRecognition ||
+    window.webkitSpeechRecognition;
+
+  if (!SpeechRecognition) {
+    alert(
+      "Voice input is not supported in this browser."
+    );
+    return;
+  }
+
+  const recognition = new SpeechRecognition();
+  recognition.lang = "en-IN";
+  recognition.continuous = false;
+  recognition.interimResults = false;
+  recognition.onstart = () => {
+    setIsListening(true);
+  };
+
+  recognition.onresult = (event) => {
+    const transcript = event.results[0][0].transcript;
+    setExperience((previous) => {
+      if (!previous.trim()) {
+        return transcript;
+      }
+      return `${previous} ${transcript}`;
+    });
+  };
+
+  recognition.onerror = (error) => {
+    console.error("Voice input error:", error);
+    setIsListening(false);
+  };
+
+  recognition.onend = () => {
+    setIsListening(false);
+  };
+
+  recognitionRef.current = recognition;
+    recognition.start();
+  };
 
   useEffect(() => {
   const fetchPublicExperiences = async () => {
@@ -39,6 +85,9 @@ function Experiences() {
   fetchPublicExperiences();
 }, []);
 
+
+
+
   const handleSubmit = async (event) => {
   event.preventDefault();
 
@@ -63,6 +112,12 @@ function Experiences() {
       throw new Error(data.message);
     }
     console.log("Experience saved:", data);
+    if (privacy === "anonymous") {
+      setPublicExperiences((previousExperiences) => [
+        data.experience,
+        ...previousExperiences,
+      ]);
+    }
     setSubmitMessage("🌙 Your experience has been saved.");
     setExperience("");
     setSelectedMood("");
@@ -196,6 +251,8 @@ function Experiences() {
               What's on your mind?
             </label>
 
+
+            <div className="experience-input-wrapper">
             <textarea
               id="experience"
               value={experience}
@@ -205,6 +262,19 @@ function Experiences() {
               placeholder="Write whatever you want..."
               rows="7"
             />
+
+            <button
+              type="button"
+              className={
+                isListening
+                  ? "voice-button listening"
+                  : "voice-button"
+              }
+              onClick={startVoiceInput}
+            >
+              {isListening ? "🎙️ Listening..." : "🎙️ Speak"}
+            </button>
+          </div>
 
           </section>
 
