@@ -198,6 +198,12 @@ const stories = [
         },
 
         {
+          type: "cafe",
+          time: "7:04 PM",
+          text: "Rain tapped softly against the café window."
+        },
+
+        {
           type: "dialogue",
           character: "Vihaan",
           text:
@@ -231,9 +237,420 @@ const stories = [
         },
 
         {
-          type: "narration",
+          type: "mystery",
           text:
             "And for the first time, Aanya wondered if the missing memories from three years ago were connected to him."
+        }
+      ]
+    },
+
+    {
+      id: 4,
+      title: "The Photograph",
+
+      scenes: [
+        {
+          type: "narration",
+          text:
+            "The café had almost emptied by the time the rain became heavier. Vihaan looked towards the window for a moment, as if trying to find the right words. Then he reached into his wallet and pulled out something carefully folded."
+        },
+
+        {
+          type: "mystery",
+          title: "An old photograph.",
+          text:
+            "The edges were worn, and the picture had faded with time."
+        },
+
+        {
+          type: "narration",
+          text:
+            "Aanya took it from him , Her eyes immediately stopped at the two familiar faces."
+        },
+
+        {
+          type: "narration",
+          text:
+            "It was her."
+        },
+
+        {
+          type: "narration",
+          text:
+            "And beside her stood Vihaan . But there was someone else in the photograph."
+        },
+
+        {
+          type: "mystery",
+          title: "A girl Aanya couldn't remember.",
+          text:
+            "She was standing between Aanya and Vihaan, smiling at the camera."
+        },
+
+        {
+          type: "dialogue",
+          character: "Aanya",
+          text:
+            "Who is she?"
+        },
+
+        {
+          type: "dialogue",
+          character: "Vihaan",
+          text:
+            "You really don't remember her?"
+        },
+
+        {
+          type: "narration",
+          text:
+            "Aanya shook her head."
+        },
+
+        {
+          type: "narration",
+          text:
+            "She turned the photograph over."
+        },
+
+        {
+          type: "photograph",
+          date: "17 July — 6:17 PM"
+        }
+      ]
+    },
+
+    {
+      id: 5,
+      title: "What Happened at 6:17",
+
+      scenes: [
+        {
+          type: "narration",
+          text:
+            "Aanya couldn't stop looking at the photograph."
+        },
+
+        {
+          type: "narration",
+          text:
+            "17 July. 6:17 PM."
+        },
+
+        {
+          type: "narration",
+          text:
+            "The numbers felt strangely familiar, like a door she had been trying to open for years."
+        },
+
+        {
+          type: "memory",
+          title: "A memory returned.",
+          text:
+            "Rain. A narrow hill road. Three people running through the storm."
+        },
+
+        {
+          type: "narration",
+          text:
+            "Aanya closed her eyes , For a second, she could see the girl from the photograph."
+        },
+
+        {
+          type: "dialogue",
+          character: "Ira",
+          text:
+            "Aanya, jaldi!"
+        },
+
+        {
+          type: "narration",
+          text:
+            "Then everything became blurry again."
+        },
+
+        {
+          type: "memory",
+          title: "Another fragment.",
+          text:
+            "Vihaan was holding Aanya's hand. Ira was standing a few steps ahead of them."
+        },
+
+        {
+          type: "narration",
+          text:
+            "There had been a storm that evening."
+        },
+
+        {
+          type: "narration",
+          text:
+            "Something had happened at exactly 6:17 PM."
+        },
+
+        {
+          type: "dialogue",
+          character: "Aanya",
+          text:
+            "What happened to Ira?"
+        },
+
+        {
+          type: "narration",
+          text:
+            "Vihaan looked down at the photograph."
+        },
+
+        {
+          type: "dialogue",
+          character: "Vihaan",
+          text:
+            "She disappeared that night."
+        },
+
+        {
+          type: "narration",
+          text:
+            "Aanya's heart sank , She remembered the rain. She remembered Vihaan. But everything after that moment was missing."
+        },
+
+        {
+          type: "dialogue",
+          character: "Vihaan",
+          text:
+            "You were hurt. After that, you couldn't remember everything."
+        },
+
+        {
+          type: "narration",
+          text:
+            "He paused before saying the last thing."
+        },
+
+        {
+          type: "dialogue",
+          character: "Vihaan",
+          text:
+            "I promised Ira I'd help you remember."
+        },
+
+        {
+          type: "mystery",
+          title: "But where did Ira go?",
+          text:
+            "And why had she left behind a memory that Aanya had spent three years trying to find?"
+        }
+      ]
+    },
+    
+    {
+      id: 6,
+      title: "The Rain Stops",
+      scenes: [
+        {
+          type: "narration",
+          text:
+            "For a long moment, neither Aanya nor Vihaan spoke."
+        },
+        {
+          type: "narration",
+          text:
+            "Then Vihaan reached into his jacket and placed one final envelope on the table."
+        },
+        {
+          type: "letter",
+          text:
+            "Aanya, if you're reading this, then you finally remembered."
+        },
+        {
+          type: "letter",
+          text:
+            "I'm sorry I left without telling you why."
+        },
+        {
+          type: "letter",
+          text:
+            "That night, I didn't disappear because of you."
+        },
+        {
+          type: "narration",
+          text:
+            "Aanya's hands began to tremble."
+        },
+        {
+          type: "letter",
+          text:
+            "You were never supposed to blame yourself for what happened."
+        },
+        {
+          type: "narration",
+          text:
+            "The memories slowly returned."
+        },
+        {
+          type: "memory",
+          title: "17 July — 6:17 PM",
+          text:
+            "The storm. The hill road. Ira running ahead. Aanya slipping on the wet road. Vihaan reaching for her hand."
+        },
+        {
+          type: "narration",
+          text:
+            "Ira had left that night because she believed staying would only make Aanya blame herself."
+        },
+        {
+          type: "narration",
+          text:
+            "She had asked Vihaan to help Aanya remember only when she was ready."
+        },
+        {
+          type: "letter",
+          text:
+            "Some people leave because they stop caring. Some leave because they care too much."
+        },
+        {
+          type: "narration",
+          text:
+            "Aanya folded the letter carefully."
+        },
+        {
+          type: "dialogue",
+          character: "Aanya",
+          text:
+            "So she was never angry with me?"
+        },
+        {
+          type: "dialogue",
+          character: "Vihaan",
+          text:
+            "Never."
+        },
+        {
+          type: "narration",
+          text:
+            "Outside, the rain had finally started to slow down."
+        },
+        {
+          type: "narration",
+          text:
+            "For three years, Aanya had stood by the window waiting for 6:17 PM."
+        },
+        {
+          type: "narration",
+          text:
+            "But that evening, she didn't wait."
+        },
+        {
+          type: "narration",
+          text:
+            "She walked outside."
+        },
+        {
+          type: "narration",
+          text:
+            "The street was quiet. The clouds were beginning to break."
+        },
+        {
+          type: "dialogue",
+          character: "Vihaan",
+          text:
+            "You don't have to wait anymore."
+        },
+        {
+          type: "narration",
+          text:
+            "Aanya smiled."
+        },
+        {
+          type: "narration",
+          text:
+            "For a moment, she looked at Vihaan the way she had looked at him in the photograph."
+        },
+        {
+          type: "dialogue",
+          character: "Aanya",
+          text:
+            "You stayed all these years?"
+        },
+        {
+          type: "dialogue",
+          character: "Vihaan",
+          text:
+            "I told you. I made a promise."
+        },
+        {
+          type: "narration",
+          text:
+            "But there was something he hadn't said."
+        },
+        {
+          type: "narration",
+          text:
+            "The promise wasn't the only reason he stayed."
+        },
+        {
+          type: "dialogue",
+          character: "Vihaan",
+          text:
+            "I loved you then, Aanya."
+        },
+        {
+          type: "narration",
+          text:
+            "He looked away for a moment."
+        },
+        {
+          type: "dialogue",
+          character: "Vihaan",
+          text:
+            "And I think some part of me never stopped."
+        },
+        {
+          type: "narration",
+          text:
+            "Aanya didn't know what to say."
+        },
+        {
+          type: "narration",
+          text:
+            "She looked at the rain, then back at him."
+        },
+        {
+          type: "dialogue",
+          character: "Aanya",
+          text:
+            "Maybe I forgot a lot of things."
+        },
+        {
+          type: "dialogue",
+          character: "Aanya",
+          text:
+            "But I don't think I forgot how I felt about you."
+        },
+        {
+          type: "narration",
+          text:
+            "Vihaan smiled."
+        },
+        {
+          type: "narration",
+          text:
+            "This time, neither of them looked towards the clock . For three years, Aanya had stood by the window waiting for 6:17 PM . But that evening, she didn't wait . She walked outside with Vihaan, the rain had almost stopped."
+        },
+        {
+          type: "narration",
+          text:
+            "And for the first time in three years, 6:17 PM was just a time."
+        },
+        {
+          type: "narration",
+          text:
+            "The rain was just rain."
+        },
+        {
+          type: "narration",
+          text:
+            "And maybe, sometimes, finding your way back to someone feels a little like coming home."
         }
       ]
     },
@@ -250,7 +667,104 @@ const stories = [
         ],
         correctAnswer: 1
       },
+      {
+      question: "Where did Aanya first see Vihaan?",
+      options: [
+        "Inside a café",
+        "Under a streetlight",
+        "At a bus stop",
+        "Near her house"
+      ],
+      correctAnswer: 1
+    },
 
+    {
+      question: "What was left on Aanya's balcony?",
+      options: [
+        "A photograph",
+        "A flower",
+        "A note",
+        "A necklace"
+      ],
+      correctAnswer: 2
+    },
+
+    {
+      question: "What was written on the back of the photograph?",
+      options: [
+        "6 June — 5:17 PM",
+        "17 July — 6:17 PM",
+        "17 August — 7:17 PM",
+        "6 July — 8:17 PM"
+      ],
+      correctAnswer: 1
+    },
+
+    {
+      question: "Who was the girl in the photograph?",
+      options: [
+        "Aanya's sister",
+        "Vihaan's friend",
+        "Ira",
+        "Aanya's cousin"
+      ],
+      correctAnswer: 2
+    },
+
+    {
+      question: "What happened to Aanya on the night of 17 July?",
+      options: [
+        "She moved away",
+        "She was injured and lost part of her memory",
+        "She left the city",
+        "She forgot Vihaan completely"
+      ],
+      correctAnswer: 1
+    },
+
+    {
+      question: "What promise did Vihaan make to Ira?",
+      options: [
+        "He would leave the city",
+        "He would find the photograph",
+        "He would help Aanya remember",
+        "He would wait at the café"
+      ],
+      correctAnswer: 2
+    },
+
+    {
+      question: "Why did Ira leave?",
+      options: [
+        "She was angry with Aanya",
+        "She wanted Aanya to blame herself",
+        "She didn't want Aanya to blame herself",
+        "She wanted to meet Vihaan"
+      ],
+      correctAnswer: 2
+    },
+
+    {
+      question: "What did Vihaan admit to Aanya at the end?",
+      options: [
+        "He had forgotten her",
+        "He loved her then and still did",
+        "He wanted to leave",
+        "He never knew her before"
+      ],
+      correctAnswer: 1
+    },
+
+    {
+      question: "What did 6:17 PM become for Aanya at the end?",
+      options: [
+        "A painful memory",
+        "A secret",
+        "Just a time",
+        "A reminder to wait"
+      ],
+      correctAnswer: 2
+    },
       {
         question: "Where was the boy standing?",
         options: [

@@ -1,17 +1,39 @@
 import { useParams } from "react-router-dom";
+import { useState } from "react";
 import stories from "../data/stories";
 
 function StoryDetails() {
   const { storyId } = useParams();
-
   const story = stories.find(
     (item) => item.id === storyId
   );
 
+  const [quizStarted, setQuizStarted] = useState(false);
+  const [currentQuestion, setCurrentQuestion] = useState(0);
+  const [selectedAnswer, setSelectedAnswer] = useState(null);
+  const [score, setScore] = useState(0);
+  const [quizFinished, setQuizFinished] = useState(false);
+
+  const handleAnswer = (answerIndex) => {
+  if (selectedAnswer !== null) return;
+  setSelectedAnswer(answerIndex);
+  if (answerIndex === story.quiz[currentQuestion].correctAnswer) {
+    setScore((previousScore) => previousScore + 1);
+    }
+  };
+
+const handleNextQuestion = () => {
+  if (currentQuestion ===story.quiz.length - 1) {
+    setQuizFinished(true);
+    return;
+  }
+  setCurrentQuestion((previousQuestion) => previousQuestion + 1);
+  setSelectedAnswer(null);
+};
+
   if (!story) {
     return <h1>Story not found</h1>;
   }
-
   return (
     <div className="story-details-page">
 
@@ -73,6 +95,35 @@ function StoryDetails() {
                   );
                 }
 
+                if (scene.type === "memory") {
+                  return (
+                    <div className="story-memory" key={index}>
+                      <span className="memory-icon">◌</span>
+                      <p className="memory-label">
+                        MEMORY
+                      </p>
+                      <h3>{scene.title}</h3>
+                      <p>{scene.text}</p>
+                    </div>
+                  );
+                }
+
+                if (scene.type === "cafe") {
+                  return (
+                    <div className="story-cafe" key={index}>
+                      <span className="cafe-icon">☕</span>
+
+                      <p className="cafe-time">
+                        {scene.time}
+                      </p>
+
+                      <p className="cafe-text">
+                        {scene.text}
+                      </p>
+                    </div>
+                  );
+                }
+
                 if (scene.type === "clock") {
                   return (
                     <div
@@ -115,13 +166,116 @@ function StoryDetails() {
                 );
               }
 
-                return null;
-              })}
+              if (scene.type === "photograph") {
+                return (
+                  <div className="story-photograph" key={index}>
+                    <div className="photo-frame">
+                      <div className="photo-scene">
+                        <span>🌧️</span>
+                        <span>👧🏻 👦🏻 👧🏻</span>
+                      </div>
+                    </div>
 
+                    <p className="photo-date">
+                      {scene.date}
+                    </p>
+                  </div>
+                );
+              }
+              return null;
+              })}
             </div>
           </section>
         ))}
 
+        {story.quiz && (
+          <section className="story-quiz">
+
+            {!quizStarted && !quizFinished && (
+              <button
+                onClick={() => setQuizStarted(true)}
+              >
+                Start Quiz 🎯
+              </button>
+        )}
+
+        {quizStarted && !quizFinished && (
+          <div>
+            <p>
+              Question {currentQuestion + 1} /{" "}
+              {story.quiz.length}
+            </p>
+            <h2>
+              {story.quiz[currentQuestion].question}
+            </h2>
+
+        {story.quiz[currentQuestion].options.map(
+          (option, index) => {
+            const correctAnswer =
+              story.quiz[currentQuestion].correctAnswer;
+              let answerClass = "";
+              if (selectedAnswer !== null) {
+              if (index === correctAnswer) {
+                answerClass = "correct";
+              } else if (index === selectedAnswer) {
+                answerClass = "wrong";
+              }
+            }
+            return (
+              <button
+                key={index}
+                className={`quiz-option ${answerClass}`}
+                onClick={() => handleAnswer(index)}
+                disabled={selectedAnswer !== null}
+              >
+                {option}
+              </button>
+            );
+          }
+        )}
+
+        {
+          selectedAnswer !== null && (
+            <p className="quiz-feedback">
+            {selectedAnswer === story.quiz[currentQuestion].correctAnswer? "✨ Correct! You remembered that."
+              : "🌙 Not quite. The correct answer is highlighted above."
+              }
+            </p>
+          )}
+
+        {
+          selectedAnswer !== null && (
+            <button onClick={handleNextQuestion}>
+              Next →
+            </button>
+          )}
+        </div>
+      )}
+
+        {quizFinished && (
+          <div className="quiz-result">
+                <p className="quiz-result-label">
+                  STORY COMPLETE
+                </p>
+
+                <h2>
+                  You made it to the end. 🌧️
+                </h2>
+
+                <p className="quiz-score">
+                  {score} / {story.quiz.length}
+                </p>
+
+                <p className="quiz-result-text">
+                  You remembered{" "}
+                  {score === story.quiz.length
+                    ? "every little detail."
+                    : "some of Aanya's story."}
+                </p>
+              </div>
+            )}
+          </section>
+        )}
       </main>
     </div>
   );

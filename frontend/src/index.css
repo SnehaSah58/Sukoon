@@ -1704,3 +1704,211 @@ body {
   line-height: 1.8;
   font-style: italic;
 }
+
+
+.story-cafe {
+  margin: 35px auto;
+  padding: 32px 25px;
+  max-width: 520px;
+  text-align: center;
+  border: 1px solid rgba(220, 166, 82, 0.18);
+  border-radius: 20px;
+  background:
+    radial-gradient(
+      circle at center,
+      rgba(91, 65, 48, 0.35),
+      rgba(25, 16, 15, 0.75)
+    );
+
+  box-shadow:
+    0 15px 35px rgba(0, 0, 0, 0.2);
+}
+
+.cafe-icon {
+  display: block;
+  margin-bottom: 12px;
+  font-size: 2rem;
+}
+
+.cafe-time {
+  margin: 0 0 8px;
+  color: #dca652;
+  font-size: 0.75rem;
+  letter-spacing: 2px;
+}
+
+.cafe-text {
+  margin: 0;
+  color: #cdbdad;
+  font-size: 1rem;
+  line-height: 1.7;
+  font-style: italic;
+}
+
+.story-photograph {
+  margin: 45px auto;
+  text-align: center;
+}
+
+.photo-frame {
+  width: 330px;
+  margin: 0 auto;
+  padding: 12px;
+  background: #e8dcc8;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
+  transform: rotate(0.3deg);
+}
+
+.photo-scene {
+  height: 230px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 25px;
+  background:linear-gradient(160deg, #6d655e, #302c2a);
+  color: #e8dcc8;
+  font-size: 2rem;
+  filter: sepia(0.25);
+}
+
+.photo-scene span:last-child {
+  font-size: 2.2rem;
+  letter-spacing: 10px;
+}
+
+.photo-date {
+  margin-top: 20px;
+  color: #b9a99a;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 0.9rem;
+  font-style: italic;
+}
+
+.story-memory {
+  margin: 40px auto;
+  padding: 32px 28px;
+  max-width: 560px;
+  text-align: center;
+  border: 1px solid rgba(180, 170, 150, 0.2);
+  border-radius: 20px;
+  background:radial-gradient( circle at center, rgba(110, 100, 90, 0.22), rgba(25, 17, 16, 0.7));
+  box-shadow:0 15px 45px rgba(0, 0, 0, 0.2);
+  opacity: 0.9;
+}
+
+.memory-icon {
+  display: block;
+  margin-bottom: 10px;
+  color: #dca652;
+  font-size: 2rem;
+}
+
+.memory-label {
+  margin: 0 0 12px;
+  color: #a99b8e;
+  font-size: 0.7rem;
+  letter-spacing: 3px;
+}
+
+.story-memory h3 {
+  margin: 0 0 12px;
+  color: #dfd1c2;
+  font-size: 1.25rem;
+  font-weight: 500;
+}
+
+.story-memory > p:last-child {
+  margin: 0;
+  color: #b9a99a;
+  font-size: 0.95rem;
+  line-height: 1.8;
+  font-style: italic;
+}
+
+/* ============================= */
+/* STORY QUIZ */
+/* ============================= */
+
+.story-quiz {
+  margin: 100px auto 0;
+  padding: 45px 35px;
+  max-width: 650px;
+  text-align: center;
+  background: rgba(40, 25, 21, 0.75);
+  border: 1px solid rgba(220, 166, 82, 0.18);
+  border-radius: 24px;
+}
+
+.story-quiz h2 {
+  margin: 15px 0 30px;
+  color: #f1e5d6;
+  font-size: 1.6rem;
+  line-height: 1.5;
+  font-weight: 500;
+}
+
+.quiz-option {
+  display: block;
+  width: 100%;
+  margin: 12px 0;
+  padding: 15px 18px;
+  border: 1px solid rgba(220, 166, 82, 0.18);
+  border-radius: 12px;
+  background: rgba(25, 16, 15, 0.7);
+  color: #d5c7b8;
+  font-family: inherit;
+  font-size: 0.95rem;
+  text-align: left;
+  cursor: pointer;
+  transition:
+    background 0.25s ease,
+    border-color 0.25s ease,
+    transform 0.2s ease;
+}
+
+.quiz-option:hover:not(:disabled) {
+  transform: translateX(4px);
+  border-color: rgba(220, 166, 82, 0.5);
+  background: rgba(220, 166, 82, 0.08);
+}
+
+.quiz-option:disabled {
+  cursor: default;
+}
+
+.quiz-option.correct {
+  border-color: rgba(100, 190, 130, 0.7);
+  background: rgba(100, 190, 130, 0.12);
+  color: #bde8c8;
+}
+
+.quiz-option.wrong {
+  border-color: rgba(210, 90, 90, 0.7);
+  background: rgba(210, 90, 90, 0.12);
+  color: #f0b5b5;
+}
+
+.quiz-feedback {
+  margin: 22px 0;
+  color: #dca652;
+  font-size: 0.95rem;
+}
+
+.story-quiz > button {
+  margin-top: 18px;
+  padding: 12px 24px;
+  border: 1px solid rgba(220, 166, 82, 0.4);
+  border-radius: 999px;
+  background: rgba(220, 166, 82, 0.1);
+  color: #dca652;
+  font-family: inherit;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition:background 0.25s ease,transform 0.2s ease;
+}
+
+.story-quiz > button:hover {
+  background: rgba(220, 166, 82, 0.18);
+  transform: translateY(-2px);
+}
