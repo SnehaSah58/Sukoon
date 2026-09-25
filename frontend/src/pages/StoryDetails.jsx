@@ -59,6 +59,20 @@ function StoryDetails() {
                   );
                 }
 
+                if (scene.type === "dialogue") {
+                  return (
+                    <div className="story-dialogue" key={index}>
+                      <p className="dialogue-character">
+                        {scene.character}
+                      </p>
+
+                      <p className="dialogue-text">
+                        “{scene.text}”
+                      </p>
+                    </div>
+                  );
+                }
+
                 if (scene.type === "clock") {
                   return (
                     <div
@@ -87,6 +101,19 @@ function StoryDetails() {
                     </div>
                   );
                 }
+
+                if (scene.type === "letter") {
+                return (
+                  <div
+                    className="story-letter"
+                    key={index}
+                  >
+                    <span className="letter-icon">💌</span>
+
+                    <p>{scene.text}</p>
+                  </div>
+                );
+              }
 
                 return null;
               })}

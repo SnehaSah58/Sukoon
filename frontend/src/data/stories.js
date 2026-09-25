@@ -69,8 +69,175 @@ const stories = [
               "Then the boy turned around and disappeared into the rain."
           }
         ]
-      }
-    ],
+      },
+
+
+    {
+      id: 2,
+      title: "The Note",
+
+      scenes: [
+        {
+          type: "narration",
+          text:
+            "The next evening, aanya was sleeping in her room then she hear some rainy sound from balcony, the rain returned just before sunset, she walked towards balcony and silently watching the beautiful rainy weather. Aanya almost forgot about the boy from the previous night."
+        },
+        {
+          type: "narration",
+          text:
+            "Almost."
+        },
+        {
+          type: "narration",
+          text:
+            "She was just about to close the window when something caught her attention. She got something ... a letter , she read it..... "
+        },
+        {
+          type: "letter",
+          text:
+            "You still remember 6:17, don't you?"
+        },
+        {
+          type: "narration",
+          text:
+            "Aanya froze."
+        },
+        {
+          type: "narration",
+          text:
+            "The small piece of paper was folded neatly and placed on the balcony railing. There was no name on it."
+        },
+        {
+          type: "narration",
+          text:
+            "She looked towards the street."
+        },
+        {
+          type: "narration",
+          text:
+            "The street area was empty. She's still looking there , like..."
+        },
+        {
+          type: "mystery",
+          title: "Someone had been here.",
+          text:
+            "The paper was still dry, even though everything around it was soaked by the rain."
+        },
+        {
+          type: "narration",
+          text:
+            "Aanya read the sentence again."
+        },
+        {
+          type: "narration",
+          text:
+            "6:17."
+        },
+
+        {
+          type: "narration",
+          text:
+            "She hadn't told anyone about that time. As if there's something that she just want to keep it to herself and like that was soo important for her... "
+        }
+      ]
+    },
+
+
+    {
+      id: 3,
+      title: "The Café",
+
+      scenes: [
+        {
+          type: "narration",
+          text:
+            "The note stayed on Aanya's desk the entire night."
+        },
+
+        {
+          type: "narration",
+          text:
+            "She tried to convince herself that it was a wrong delivery , or a bad prank . But the single sentence kept echoing against the walls of her mind."
+        },
+
+        {
+          type: "narration",
+          text:
+            "You still remember 6:17, don't you?"
+        },
+
+        {
+          type: "narration",
+          text:
+            "Aanya tries to sleep , but she can't ... She looks tensed and thinking about that letter only , suddenly she realizes it's already morning then she wake up from bed and gone to fresh n up . She makes breakfast for self and take a bath. "
+        },
+
+        {
+          type: "narration",
+          text:
+            "In evening, Aanya walked to the little café near the old street."
+        },
+
+        {
+          type: "narration",
+          text:
+            "She didn't know exactly what she was looking for."
+        },
+
+        {
+          type: "narration",
+          text:
+            "Until she saw him."
+        },
+
+        {
+          type: "mystery",
+          title: "The boy from the streetlight.",
+          text:
+            "He was sitting alone near the window, quietly watching the rain."
+        },
+
+        {
+          type: "dialogue",
+          character: "Vihaan",
+          text:
+            "Tum mujhe pehchaan nahi rahi?"
+        },
+
+        {
+          type: "dialogue",
+          character: "Aanya",
+          text:
+            "Should I?"
+        },
+
+        {
+          type: "dialogue",
+          character: "Vihaan",
+          text:
+            "Maybe you forgot."
+        },
+
+        {
+          type: "narration",
+          text:
+            "Aanya looked at him carefully."
+        },
+
+        {
+          type: "narration",
+          text:
+            "There was something strangely familiar about his face."
+        },
+
+        {
+          type: "narration",
+          text:
+            "And for the first time, Aanya wondered if the missing memories from three years ago were connected to him."
+        }
+      ]
+    },
+  ],
 
     quiz: [
       {

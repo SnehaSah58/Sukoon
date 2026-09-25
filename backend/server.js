@@ -7,8 +7,6 @@ require("dotenv").config();
 
 const experienceRoutes = require("./routes/experienceRoutes");
 
-
-
 dns.setServers(["8.8.8.8"]);
 
 const app = express();
@@ -19,7 +17,6 @@ app.use(cors());
 app.use(express.json());
 
 app.use("/api/experiences", experienceRoutes);
-
 
 // MongoDB connection
 mongoose
