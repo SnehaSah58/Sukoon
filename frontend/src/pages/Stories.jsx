@@ -1,8 +1,9 @@
 import Navbar from "../components/Navbar";
 import { Link } from "react-router-dom";
-import stories from "../data/stories";
+import aanya from "../data/aanya";
 
 function Stories() {
+  const stories = [aanya];
   return (
     <div className="stories-page">
       <Navbar />
@@ -48,13 +49,10 @@ function Stories() {
                 <span className="story-card-link">
                   Enter story →
                 </span>
-
               </div>
             </Link>
           ))}
-
         </section>
-
       </main>
     </div>
   );

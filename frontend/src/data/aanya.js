@@ -1,4 +1,4 @@
-const stories = [
+const aanya = 
   {
     id: "aanya",
     character: "Aanya",
@@ -777,6 +777,5 @@ const stories = [
       }
     ]
   }
-];
 
-export default stories;
+export default aanya;

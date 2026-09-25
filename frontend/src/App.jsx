@@ -39,7 +39,6 @@ function Landing() {
             ↗ Share Sukoon
           </button>
         </div>
-
       </main>
     </div>
   );
@@ -61,8 +60,7 @@ function App() {
         <Route path="/stories" element={<Stories />} />
 
         <Route path="/stories/:storyId" element={<StoryDetails />} />
-        
-
+    
       </Routes>
     </BrowserRouter>
   );

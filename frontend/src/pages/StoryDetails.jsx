@@ -1,12 +1,13 @@
 import { useParams } from "react-router-dom";
 import { useState } from "react";
-import stories from "../data/stories";
+import aanya from "../data/aanya";
 
 function StoryDetails() {
   const { storyId } = useParams();
-  const story = stories.find(
-    (item) => item.id === storyId
-  );
+
+  const story = storyId === "aanya"
+  ? aanya
+  : null;
 
   const [quizStarted, setQuizStarted] = useState(false);
   const [currentQuestion, setCurrentQuestion] = useState(0);
