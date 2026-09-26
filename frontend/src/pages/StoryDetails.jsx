@@ -1,13 +1,14 @@
 import { useParams } from "react-router-dom";
 import { useState } from "react";
 import aanya from "../data/aanya";
+import room307 from "../data/room307";
 
 function StoryDetails() {
   const { storyId } = useParams();
 
-  const story = storyId === "aanya"
-  ? aanya
-  : null;
+  const story = storyId === "aanya" ? aanya
+      : storyId === "room-307" ? room307
+      : null;
 
   const [quizStarted, setQuizStarted] = useState(false);
   const [currentQuestion, setCurrentQuestion] = useState(0);
@@ -46,16 +47,13 @@ const handleNextQuestion = () => {
         <p className="story-genre">
           {story.genre.join(" • ")}
         </p>
-
         <h1>{story.title}</h1>
-
         <p className="story-description">
           {story.shortDescription}
         </p>
       </header>
 
       <main className="story-content">
-
         {story.chapters.map((chapter) => (
           <section
             className="story-chapter"
@@ -64,13 +62,10 @@ const handleNextQuestion = () => {
             <p className="chapter-label">
               CHAPTER {chapter.id}
             </p>
-
             <h2>{chapter.title}</h2>
 
             <div className="story-scenes">
-
               {chapter.scenes.map((scene, index) => {
-
                 if (scene.type === "narration") {
                   return (
                     <p
@@ -137,6 +132,43 @@ const handleNextQuestion = () => {
                   );
                 }
 
+                if (scene.type === "phone") {
+                  return (
+                    <div className="story-phone">
+                      <span className="phone-icon">☎️</span>
+
+                      <p className="phone-label">INCOMING CALL</p>
+
+                      <h3>{scene.time}</h3>
+
+                      <p>{scene.text}</p>
+                    </div>
+                  );
+                }
+
+                if (scene.type === "whisper") {
+                  return (
+                    <div className="story-whisper">
+                      <span className="whisper-icon">🗣️</span>
+                      <p className="whisper-label">A VOICE</p>
+                      <p className="whisper-text">
+                        "{scene.text}"
+                      </p>
+                    </div>
+                  );
+                }
+
+                if (scene.type === "oldRegister") {
+                  return (
+                    <div className="story-register">
+                      <span className="register-icon">📖</span>
+                      <p className="register-label">OLD HOTEL REGISTER</p>
+                      <h3>{scene.title}</h3>
+                      <p>{scene.text}</p>
+                    </div>
+                  );
+                }
+
                 if (scene.type === "mystery") {
                   return (
                     <div
@@ -146,9 +178,7 @@ const handleNextQuestion = () => {
                       <span className="mystery-icon">
                         🔎
                       </span>
-
                       <h3>{scene.title}</h3>
-
                       <p>{scene.text}</p>
                     </div>
                   );
@@ -161,7 +191,6 @@ const handleNextQuestion = () => {
                     key={index}
                   >
                     <span className="letter-icon">💌</span>
-
                     <p>{scene.text}</p>
                   </div>
                 );
@@ -191,7 +220,6 @@ const handleNextQuestion = () => {
 
         {story.quiz && (
           <section className="story-quiz">
-
             {!quizStarted && !quizFinished && (
               <button
                 onClick={() => setQuizStarted(true)}
@@ -262,16 +290,14 @@ const handleNextQuestion = () => {
                 <h2>
                   You made it to the end. 🌧️
                 </h2>
-
                 <p className="quiz-score">
                   {score} / {story.quiz.length}
                 </p>
-
                 <p className="quiz-result-text">
                   You remembered{" "}
                   {score === story.quiz.length
                     ? "every little detail."
-                    : "some of Aanya's story."}
+                    : "some of the story."}
                 </p>
               </div>
             )}

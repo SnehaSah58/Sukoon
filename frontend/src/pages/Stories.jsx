@@ -1,9 +1,10 @@
 import Navbar from "../components/Navbar";
 import { Link } from "react-router-dom";
 import aanya from "../data/aanya";
+import room307 from "../data/room307";
 
 function Stories() {
-  const stories = [aanya];
+  const stories = [aanya,room307];
   return (
     <div className="stories-page">
       <Navbar />
