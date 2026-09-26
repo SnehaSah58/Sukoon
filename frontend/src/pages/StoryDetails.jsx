@@ -2,12 +2,14 @@ import { useParams } from "react-router-dom";
 import { useState } from "react";
 import aanya from "../data/aanya";
 import room307 from "../data/room307";
+import meera from "../data/meera";
 
 function StoryDetails() {
   const { storyId } = useParams();
 
   const story = storyId === "aanya" ? aanya
       : storyId === "room-307" ? room307
+      : storyId === "meera" ? meera
       : null;
 
   const [quizStarted, setQuizStarted] = useState(false);
@@ -136,11 +138,8 @@ const handleNextQuestion = () => {
                   return (
                     <div className="story-phone">
                       <span className="phone-icon">☎️</span>
-
                       <p className="phone-label">INCOMING CALL</p>
-
                       <h3>{scene.time}</h3>
-
                       <p>{scene.text}</p>
                     </div>
                   );
@@ -164,6 +163,20 @@ const handleNextQuestion = () => {
                       <span className="register-icon">📖</span>
                       <p className="register-label">OLD HOTEL REGISTER</p>
                       <h3>{scene.title}</h3>
+                      <p>{scene.text}</p>
+                    </div>
+                  );
+                }
+
+                if (scene.type === "cctv") {
+                  return (
+                    <div className="story-cctv">
+                      <span className="cctv-icon">📹</span>
+
+                      <p className="cctv-label">CCTV FOOTAGE</p>
+
+                      <h3>{scene.time}</h3>
+
                       <p>{scene.text}</p>
                     </div>
                   );
@@ -240,13 +253,13 @@ const handleNextQuestion = () => {
 
         {story.quiz[currentQuestion].options.map(
           (option, index) => {
-            const correctAnswer =
-              story.quiz[currentQuestion].correctAnswer;
+            const correctAnswer =  story.quiz[currentQuestion].correctAnswer;
               let answerClass = "";
               if (selectedAnswer !== null) {
               if (index === correctAnswer) {
                 answerClass = "correct";
-              } else if (index === selectedAnswer) {
+              } 
+              else if (index === selectedAnswer) {
                 answerClass = "wrong";
               }
             }
@@ -257,7 +270,7 @@ const handleNextQuestion = () => {
                 onClick={() => handleAnswer(index)}
                 disabled={selectedAnswer !== null}
               >
-                {option}
+              {option}
               </button>
             );
           }

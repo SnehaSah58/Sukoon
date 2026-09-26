@@ -2,15 +2,15 @@ import Navbar from "../components/Navbar";
 import { Link } from "react-router-dom";
 import aanya from "../data/aanya";
 import room307 from "../data/room307";
+import meera from "../data/meera";
 
 function Stories() {
-  const stories = [aanya,room307];
+  const stories = [aanya,room307,meera];
   return (
     <div className="stories-page">
       <Navbar />
 
       <main className="stories-content">
-
         <p className="stories-label">STORIES</p>
 
         <h1>

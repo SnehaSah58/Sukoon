@@ -14,8 +14,8 @@ function Navbar() {
         <Link to="/experiences">Experiences</Link>
         <Link to="/stories">Stories</Link>
       </div>
-
     </nav>
+    
   );
 }
 
