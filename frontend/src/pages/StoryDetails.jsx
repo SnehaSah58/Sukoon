@@ -1,8 +1,10 @@
 import { useParams } from "react-router-dom";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import aanya from "../data/aanya";
 import room307 from "../data/room307";
 import meera from "../data/meera";
+import weddingChaos from "../data/weddingChaos";
 
 function StoryDetails() {
   const { storyId } = useParams();
@@ -10,6 +12,7 @@ function StoryDetails() {
   const story = storyId === "aanya" ? aanya
       : storyId === "room-307" ? room307
       : storyId === "meera" ? meera
+      : storyId === "weddingChaos" ? weddingChaos
       : null;
 
   const [quizStarted, setQuizStarted] = useState(false);
@@ -76,6 +79,32 @@ const handleNextQuestion = () => {
                     >
                       {scene.text}
                     </p>
+                  );
+                }
+
+                if(scene.type === "food")  {
+                  return(
+                    <div className="story-food">
+                      <span className="food-icon">{scene.icon}</span>
+
+                      <p className="food-label">{scene.label}</p>
+                      <h3>{scene.title}</h3>
+                      <p className="food-text">{scene.text}</p>
+                    </div>
+                  );
+                }
+
+                if (scene.type === "gift") {
+                  return (
+                    <div className="story-gift">
+                      <span className="gift-icon">{scene.icon}</span>
+
+                      <p className="gift-label">{scene.label}</p>
+
+                      <h3>{scene.title}</h3>
+
+                      <p className="gift-text">{scene.text}</p>
+                    </div>
                   );
                 }
 
@@ -197,6 +226,27 @@ const handleNextQuestion = () => {
                   );
                 }
 
+                if (scene.type === "shadow") {
+                  return (
+                    <div className="story-shadow">
+                      <div className="shadow-light"></div>
+
+                      <div className="shadow-figure">
+                        <div className="shadow-head"></div>
+                        <div className="shadow-body"></div>
+                      </div>
+
+                      <div className="shadow-content">
+                        <p className="shadow-label">{scene.label}</p>
+
+                        <h3>{scene.title}</h3>
+
+                        <p className="shadow-text">{scene.text}</p>
+                      </div>
+                    </div>
+                  );
+                }
+
                 if (scene.type === "letter") {
                 return (
                   <div
@@ -312,6 +362,15 @@ const handleNextQuestion = () => {
                     ? "every little detail."
                     : "some of the story."}
                 </p>
+                <div className="story-complete-actions">
+                  <Link to="/stories" className="story-complete-button primary">
+                    Read Another Story
+                  </Link>
+
+                  <Link to="/stories" className="story-complete-button secondary">
+                    ← Back to Stories
+                  </Link>
+                </div>
               </div>
             )}
           </section>
