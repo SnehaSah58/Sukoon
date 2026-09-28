@@ -5,6 +5,7 @@ import aanya from "../data/aanya";
 import room307 from "../data/room307";
 import meera from "../data/meera";
 import weddingChaos from "../data/weddingChaos";
+import beforeWeSleep from "../data/beforeWeSleep";
 
 function StoryDetails() {
   const { storyId } = useParams();
@@ -13,6 +14,7 @@ function StoryDetails() {
       : storyId === "room-307" ? room307
       : storyId === "meera" ? meera
       : storyId === "weddingChaos" ? weddingChaos
+      : storyId === "beforeWeSleep" ? beforeWeSleep
       : null;
 
   const [quizStarted, setQuizStarted] = useState(false);
@@ -268,13 +270,175 @@ const handleNextQuestion = () => {
                         <span>👧🏻 👦🏻 👧🏻</span>
                       </div>
                     </div>
-
                     <p className="photo-date">
                       {scene.date}
                     </p>
                   </div>
                 );
               }
+
+              if (scene.type === "summerMemory") {
+                return (
+                  <div className="story-summer-memory">
+                    <div className="summer-memory-overlay"></div>
+
+                    <div className="summer-memory-content">
+                      <p className="summer-memory-label">{scene.label}</p>
+
+                      <h3>{scene.title}</h3>
+
+                      <p className="summer-memory-text">
+                        {scene.text}
+                      </p>
+                    </div>
+                  </div>
+                );
+              }
+
+              if (scene.type === "chatMessage") {
+                return (
+                  <div className="story-chat-message">
+                    <div className="chat-message-header">
+                      <span className="chat-message-character">
+                        {scene.character}
+                      </span>
+                    </div>
+
+                    <div className="chat-message-bubble">
+                      {scene.text}
+                    </div>
+                  </div>
+                );
+              }
+
+              if (scene.type === "voiceCall") {
+                return (
+                  <div className="story-voice-call">
+                    <div className="voice-call-icon">📞</div>
+
+                    <p className="voice-call-label">VOICE CALL</p>
+
+                    <h3>{scene.character}</h3>
+
+                    {scene.time && (
+                      <p className="voice-call-time">{scene.time}</p>
+                    )}
+
+                    <p className="voice-call-text">{scene.text}</p>
+                  </div>
+                );
+              }
+
+              if (scene.type === "videoCall") {
+                return (
+                  <div className="story-video-call">
+                    <div className="video-call-screen">
+                      <div className="video-call-person">
+                        <div className="video-call-avatar">👤</div>
+                        <span>{scene.character}</span>
+                      </div>
+
+                      <div className="video-call-status">
+                        <span className="video-call-dot"></span>
+                        Connected
+                      </div>
+                    </div>
+                    <div className="video-call-info">
+                      <p className="video-call-label">VIDEO CALL</p>
+                      {scene.time && (
+                        <p className="video-call-time">{scene.time}</p>
+                      )}
+                      <p className="video-call-text">{scene.text}</p>
+                    </div>
+                  </div>
+                );
+              }
+
+              if (scene.type === "thinking") {
+              return (
+                <div className="story-thinking">
+                  <div className="thinking-mark"> 💭 “</div>
+
+                  <p className="thinking-label">{scene.label}</p>
+
+                  <p className="thinking-text">
+                    {scene.text}
+                  </p>
+
+                  <div className="thinking-mark thinking-end">”</div>
+                </div>
+              );
+            }
+
+            if (scene.type === "meeting") {
+              return (
+                <div className="story-meeting">
+                  <div className="meeting-glow"></div>
+                  <div className="meeting-content">
+                    <p className="meeting-label">{scene.label}</p>
+                    <div className="meeting-icon">{scene.icon}</div>
+                    <h3>{scene.title}</h3>
+                    <p className="meeting-text">{scene.text}</p>
+                  </div>
+                </div>
+              );
+            }
+
+            if (scene.type === "romanticMoment") {
+              return (
+                <div className="story-romantic">
+                  <div className="romantic-glow"></div>
+                  <div className="romantic-content">
+                    <div className="romantic-icon">{scene.icon}</div>
+                    <p className="romantic-label">{scene.label}</p>
+                    <h3>{scene.title}</h3>
+                    <p className="romantic-text">{scene.text}</p>
+                  </div>
+                </div>
+              );
+            }
+
+            if (scene.type === "temple") {
+              return (
+                <div className="story-temple">
+                  <div className="temple-glow"></div>
+
+                  <div className="temple-content">
+                    <div className="temple-icon">{scene.icon}</div>
+
+                    <p className="temple-label">{scene.label}</p>
+
+                    <h3>{scene.title}</h3>
+
+                    <p className="temple-text">
+                      {scene.text}
+                    </p>
+
+                    <div className="temple-bell">🔔</div>
+                  </div>
+                </div>
+              );
+            }
+
+
+            if (scene.type === "photoMoment") {
+              return (
+                <div className="story-photo-moment">
+                  <div className="photo-frame">
+                    <div className="photo-icon">{scene.icon}</div>
+
+                    <p className="photo-label">{scene.label}</p>
+
+                    <h3>{scene.title}</h3>
+
+                    <p className="photo-text">
+                      {scene.text}
+                    </p>
+                  </div>
+                </div>
+              );
+            }
+
               return null;
               })}
             </div>

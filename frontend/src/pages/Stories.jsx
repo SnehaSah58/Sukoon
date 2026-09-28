@@ -4,9 +4,10 @@ import aanya from "../data/aanya";
 import room307 from "../data/room307";
 import meera from "../data/meera";
 import weddingChaos from "../data/weddingChaos";
+import beforeWeSleep from "../data/beforeWeSleep";
 
 function Stories() {
-  const stories = [aanya,room307,meera,weddingChaos];
+  const stories = [aanya,room307,meera,weddingChaos,beforeWeSleep];
   return (
     <div className="stories-page">
       <Navbar />
