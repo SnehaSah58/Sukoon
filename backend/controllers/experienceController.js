@@ -4,6 +4,20 @@ const createExperience = async (req, res) => {
   try {
     const { mood, experience, privacy } = req.body;
 
+// Check required fields
+    if (!mood || !experience) {
+      return res.status(400).json({
+        message: "Mood and experience are required",
+      });
+    }
+
+    // Check privacy value
+    if (privacy !== "private" && privacy !== "anonymous") {
+      return res.status(400).json({
+        message: "Invalid privacy option",
+      });
+    }
+
     const newExperience = await Experience.create({
       mood,
       experience,

@@ -8,6 +8,28 @@ import Stories from "./pages/Stories";
 import StoryDetails from "./pages/StoryDetails";
 
 function Landing() {
+
+  async function handleShare() {
+  const shareData = {
+    title: "Sukoon.",
+    text: "A little corner of the internet where you don't have to be anything.",
+    url: window.location.origin,
+  };
+
+  try {
+    if (navigator.share) {
+      await navigator.share(shareData);
+    } else {
+      await navigator.clipboard.writeText(window.location.origin);
+      alert("Sukoon link copied! 🌙");
+    }
+  } catch (error) {
+    if (error.name !== "AbortError") {
+      console.error("Share failed:", error);
+    }
+  }
+}
+
   return (
     <div className="landing-page">
 
@@ -30,12 +52,13 @@ function Landing() {
           where you don't have to be anything.
         </p>
 
+
         <div className="landing-buttons">
           <a href="/home" className="enter-button">
             🎧 Enter Sukoon
           </a>
 
-          <button className="share-button">
+          <button className="share-button" onClick={handleShare}>
             ↗ Share Sukoon
           </button>
         </div>
