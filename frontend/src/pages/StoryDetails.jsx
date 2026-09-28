@@ -232,17 +232,13 @@ const handleNextQuestion = () => {
                   return (
                     <div className="story-shadow">
                       <div className="shadow-light"></div>
-
                       <div className="shadow-figure">
                         <div className="shadow-head"></div>
                         <div className="shadow-body"></div>
                       </div>
-
                       <div className="shadow-content">
                         <p className="shadow-label">{scene.label}</p>
-
                         <h3>{scene.title}</h3>
-
                         <p className="shadow-text">{scene.text}</p>
                       </div>
                     </div>
@@ -253,8 +249,7 @@ const handleNextQuestion = () => {
                 return (
                   <div
                     className="story-letter"
-                    key={index}
-                  >
+                    key={index} >
                     <span className="letter-icon">💌</span>
                     <p>{scene.text}</p>
                   </div>
@@ -281,12 +276,9 @@ const handleNextQuestion = () => {
                 return (
                   <div className="story-summer-memory">
                     <div className="summer-memory-overlay"></div>
-
                     <div className="summer-memory-content">
                       <p className="summer-memory-label">{scene.label}</p>
-
                       <h3>{scene.title}</h3>
-
                       <p className="summer-memory-text">
                         {scene.text}
                       </p>
@@ -303,7 +295,6 @@ const handleNextQuestion = () => {
                         {scene.character}
                       </span>
                     </div>
-
                     <div className="chat-message-bubble">
                       {scene.text}
                     </div>
@@ -315,15 +306,11 @@ const handleNextQuestion = () => {
                 return (
                   <div className="story-voice-call">
                     <div className="voice-call-icon">📞</div>
-
                     <p className="voice-call-label">VOICE CALL</p>
-
                     <h3>{scene.character}</h3>
-
                     {scene.time && (
                       <p className="voice-call-time">{scene.time}</p>
                     )}
-
                     <p className="voice-call-text">{scene.text}</p>
                   </div>
                 );
@@ -358,13 +345,10 @@ const handleNextQuestion = () => {
               return (
                 <div className="story-thinking">
                   <div className="thinking-mark"> 💭 “</div>
-
                   <p className="thinking-label">{scene.label}</p>
-
                   <p className="thinking-text">
                     {scene.text}
                   </p>
-
                   <div className="thinking-mark thinking-end">”</div>
                 </div>
               );
@@ -434,6 +418,163 @@ const handleNextQuestion = () => {
                     <p className="photo-text">
                       {scene.text}
                     </p>
+                  </div>
+                </div>
+              );
+            }
+
+            if (scene.type === "restaurant") {
+              return (
+                <div className="story-restaurant">
+                  <div className="restaurant-glow"></div>
+
+                  <div className="restaurant-content">
+                    <div className="restaurant-icon">{scene.icon}</div>
+
+                    <p className="restaurant-label">{scene.label}</p>
+
+                    <h3>{scene.title}</h3>
+
+                    <p className="restaurant-text">
+                      {scene.text}
+                    </p>
+
+                    <div className="restaurant-lights">
+                      <span>•</span>
+                      <span>•</span>
+                      <span>•</span>
+                    </div>
+                  </div>
+                </div>
+              );
+            }
+
+            if (scene.type === "proposal") {
+              return (
+                <div className="story-proposal">
+                  <div className="proposal-glow"></div>
+                  <div className="proposal-content">
+                    <div className="proposal-icon">{scene.icon}</div>
+                    <p className="proposal-label">{scene.label}</p>
+                    <h3>{scene.title}</h3>
+                    <p className="proposal-text">
+                      {scene.text}
+                    </p>
+                    <div className="proposal-ring">💍</div>
+                  </div>
+                </div>
+              );
+            }
+
+            if (scene.type === "voiceNote") {
+              return (
+                <div className="story-voice-note">
+                  <div className="voice-note-icon">🎙️</div>
+
+                  <p className="voice-note-label">{scene.label}</p>
+
+                  <div className="voice-note-player">
+                    <span className="voice-note-play">▶</span>
+
+                    <div className="voice-note-line">
+                      <span></span>
+                    </div>
+
+                    <span className="voice-note-time">
+                      {scene.duration}
+                    </span>
+                  </div>
+
+                  <p className="voice-note-text">
+                    {scene.text}
+                  </p>
+
+                  <span className="voice-note-sender">
+                    — {scene.sender}
+                  </span>
+                </div>
+              );
+            }
+
+            if (scene.type === "promise") {
+              return (
+                <div className="story-promise">
+                  <div className="promise-glow"></div>
+                  <div className="promise-content">
+                    <div className="promise-icon">{scene.icon}</div>
+                    <p className="promise-label">{scene.label}</p>
+                    <h3>{scene.title}</h3>
+                    <p className="promise-text">
+                      {scene.text}
+                    </p>
+                  </div>
+                </div>
+              );
+            }
+
+            if (scene.type === "jealousy") {
+              return (
+                <div className="story-jealousy">
+                  <div className="jealousy-glow"></div>
+                  <div className="jealousy-content">
+                    <div className="jealousy-icon">{scene.icon}</div>
+                    <p className="jealousy-label">{scene.label}</p>
+                    <h3>{scene.title}</h3>
+                    <p className="jealousy-text">
+                      {scene.text}
+                    </p>
+                  </div>
+                </div>
+              );
+            }
+
+            if (scene.type === "photoEvidence") {
+              return (
+                <div className="story-photo-evidence">
+                  <div className="evidence-frame">
+                    <div className="evidence-icon">{scene.icon}</div>
+
+                    <p className="evidence-label">{scene.label}</p>
+
+                    <h3>{scene.title}</h3>
+
+                    <div className="evidence-photo">
+                      📷
+                    </div>
+
+                    <p className="evidence-text">
+                      {scene.text}
+                    </p>
+                  </div>
+                </div>
+              );
+            }
+
+            if (scene.type === "happyEnding") {
+              return (
+                <div className="story-happy-ending">
+                  <div className="happy-ending-glow"></div>
+
+                  <div className="happy-ending-content">
+                    <div className="happy-ending-icon">{scene.icon}</div>
+
+                    <p className="happy-ending-label">{scene.label}</p>
+
+                    <h3>{scene.title}</h3>
+
+                    <p className="happy-ending-text">
+                      {scene.text}
+                    </p>
+
+                    <div className="happy-ending-hug">
+                      🫂
+                    </div>
+
+                    <div className="happy-ending-hearts">
+                      <span>♥</span>
+                      <span>♥</span>
+                      <span>♥</span>
+                    </div>
                   </div>
                 </div>
               );
