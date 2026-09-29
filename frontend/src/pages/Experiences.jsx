@@ -87,7 +87,7 @@ function Experiences() {
 
   try {
     const response = await fetch(
-      "http://localhost:5000/api/experiences",
+      "/api/experiences",
       {
         method: "POST",
         headers: {
